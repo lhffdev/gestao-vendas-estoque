@@ -1,0 +1,44 @@
+@import 'vars';
+
+.navbar {
+  height: 72px;
+  background-color: $white;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.12);
+  color: $primary;
+  z-index: 9999;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #f8f9fa;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  outline: none;
+}
+
+.avatar {
+  position: relative;
+
+  img {
+    height: 32px;
+    width: 32px;
+    margin-right: 8px;
+    border-radius: 50%;
+  }
+
+  i {
+    border-radius: 50%;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    right: 6px;
+    bottom: 0;
+    border: 1px solid #FFF;
+    background-color: #53D49B;
+  }
+}
+
+.dados-empresa {
+  font-size: 16px;
+  font-weight: bold;
+}
