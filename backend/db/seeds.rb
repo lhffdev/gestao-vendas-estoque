@@ -6,4 +6,20 @@ JSON.parse(File.read(Rails.root.join('lib', 'seeds', 'cidades.json')), symbolize
 	Cidade.create!(cidade)
 end
 
-Pessoa.create!(logradouro: '', numero: '', bairro: '', cidade_id: 3538006)
+pessoa = Pessoa.new(
+	cep: "00000000",
+	logradouro: "Av. Administrador",
+	numero: "100",
+	bairro: "Bairro Administrador",
+	cidade_id: 3538006,
+	celular: "00000000000",
+	email: "administrador@administrador.com"
+)
+
+pessoa.pessoa_fisica = PessoaFisica.new(
+	cpf: "75542232086",
+	rg: "174226627",
+	nome: "Administrador"
+)
+
+pessoa.save!

@@ -1,9 +1,10 @@
 class PessoasController < ApplicationController
   def index
-    @pessoas = Pessoa.all
+    @pessoas = Pessoa.index
   end
 
   def show
+    @pessoa = Pessoa.show(params[:id])
   end
 
   def create

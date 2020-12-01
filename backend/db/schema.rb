@@ -31,34 +31,39 @@ ActiveRecord::Schema.define(version: 2020_05_24_181359) do
 
   create_table "pessoa_fisicas", force: :cascade do |t|
     t.bigint "pessoa_id", null: false
-    t.string "nome", limit: 255, null: false
-    t.integer "cpf", null: false
-    t.integer "rg", null: false
+    t.string "nome", limit: 200, null: false
+    t.string "cpf", limit: 11, null: false
+    t.string "rg", limit: 9, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["cpf"], name: "index_pessoa_fisicas_on_cpf", unique: true
     t.index ["pessoa_id"], name: "index_pessoa_fisicas_on_pessoa_id"
+    t.index ["rg"], name: "index_pessoa_fisicas_on_rg", unique: true
   end
 
   create_table "pessoa_juridicas", force: :cascade do |t|
     t.bigint "pessoa_id", null: false
-    t.string "razao_social", limit: 255, null: false
-    t.string "nome_fantasia", limit: 255, null: false
-    t.string "responsavel", limit: 255, null: false
-    t.integer "cnpj", null: false
-    t.integer "inscricao_estadual", null: false
+    t.string "razao_social", limit: 250, null: false
+    t.string "nome_fantasia", limit: 250
+    t.string "responsavel", limit: 200, null: false
+    t.string "cnpj", limit: 14, null: false
+    t.string "inscricao_estadual", limit: 12
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["cnpj"], name: "index_pessoa_juridicas_on_cnpj", unique: true
+    t.index ["inscricao_estadual"], name: "index_pessoa_juridicas_on_inscricao_estadual", unique: true
     t.index ["pessoa_id"], name: "index_pessoa_juridicas_on_pessoa_id"
   end
 
   create_table "pessoas", force: :cascade do |t|
-    t.string "logradouro", null: false
-    t.string "numero", null: false
-    t.string "bairro", null: false
+    t.string "cep", limit: 8, null: false
+    t.string "logradouro", limit: 150, null: false
+    t.string "numero", limit: 10, null: false
+    t.string "bairro", limit: 100, null: false
     t.integer "cidade_id", null: false
-    t.integer "telefone"
-    t.integer "celular"
-    t.string "email"
+    t.string "telefone", limit: 10
+    t.string "celular", limit: 11
+    t.string "email", limit: 100
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cidade_id"], name: "index_pessoas_on_cidade_id"

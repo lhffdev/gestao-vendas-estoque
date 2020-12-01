@@ -1,2 +1,7 @@
-json.extract! pessoa, :id, :logradouro, :numero, :bairro, :cidade, :telefone, :celular, :email, :created_at, :updated_at
-json.url pessoa_url(pessoa, format: :json)
+json.call(pessoa, :pessoa_id, :cep, :logradouro, :numero, :bairro, :cidade_id, :telefone, :celular, :email)
+
+if pessoa.pessoa_fisica_id?
+  json.call(pessoa, :pessoa_fisica_id, :nome, :cpf, :rg, :cidade_id, :telefone, :celular, :email)
+else
+  json.call(pessoa, :pessoa_juridica_id, :razao_social, :nome_fantasia, :responsavel, :cnpj, :inscricao_estadual)
+end

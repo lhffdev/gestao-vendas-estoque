@@ -17,7 +17,9 @@ class BaseAction
   end
 
   def error(message)
-    raise ActionError.new(message)
+    raise ActionError, message.to_hash.map {|key, value| value}.join('/') if message.respond_to?(:full_messages)
+
+    raise ActionError, message
   end
 
 end
