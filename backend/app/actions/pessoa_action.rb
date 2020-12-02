@@ -36,7 +36,8 @@ class PessoaAction < BaseAction
       :cidade_id, 
       :telefone, 
       :celular, 
-      :email
+      :email,
+      :ativo
     )
   end
 

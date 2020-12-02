@@ -9,6 +9,7 @@ class CreatePessoas < ActiveRecord::Migration[6.0]
       t.string :telefone, limit: 10
       t.string :celular, limit: 11
       t.string :email, limit: 100
+      t.integer :ativo, null: false, default: 1
 
       t.timestamps
     end

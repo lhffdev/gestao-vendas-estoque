@@ -20,6 +20,6 @@ class PessoasController < ApplicationController
   def save_or_update
     action = PessoaAction.new(self)
     action.save!
-    render json: { idPessoa: action.pessoa.id }
+    render json: { pessoaId: action.pessoa.id }
   end
 end

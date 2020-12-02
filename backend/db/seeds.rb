@@ -23,3 +23,9 @@ pessoa.pessoa_fisica = PessoaFisica.new(
 )
 
 pessoa.save!
+
+Usuario.create!(
+	username: 'administrador',
+	password: '123',
+	pessoa: pessoa
+)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_181359) do
+ActiveRecord::Schema.define(version: 2020_12_01_231243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,13 +64,26 @@ ActiveRecord::Schema.define(version: 2020_05_24_181359) do
     t.string "telefone", limit: 10
     t.string "celular", limit: 11
     t.string "email", limit: 100
+    t.integer "ativo", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cidade_id"], name: "index_pessoas_on_cidade_id"
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string "username", limit: 50, null: false
+    t.string "password", limit: 50, null: false
+    t.bigint "pessoa_id", null: false
+    t.integer "ativo", default: 1, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pessoa_id"], name: "index_usuarios_on_pessoa_id", unique: true
+    t.index ["username"], name: "index_usuarios_on_username", unique: true
   end
 
   add_foreign_key "cidades", "estados", column: "uf", primary_key: "uf"
   add_foreign_key "pessoa_fisicas", "pessoas"
   add_foreign_key "pessoa_juridicas", "pessoas"
   add_foreign_key "pessoas", "cidades", primary_key: "cd_ibge"
+  add_foreign_key "usuarios", "pessoas"
 end
